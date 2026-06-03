@@ -1,8 +1,8 @@
 # Configurações locais do Claude Code (pessoais, não versionar)
 .claude/settings.local.json
-.vscode/
 .claude/
 CLAUDE.md
+.vscode/
 
 # Sistema operacional
 Thumbs.db

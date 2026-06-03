@@ -22,7 +22,7 @@
     { id: 'blossom',        name: 'Vela Blossom',   collection: 'blossom', image: 'assets/collections/blossom/vela-blossom.webp',       desc: 'Flor esculpida em cera, tons pastéis suaves.',
       variants: [ { id: 'unid',  label: 'Unidade',                     price: 30  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 290 } ] },
     { id: 'buque-cia',      name: 'Buquê e Cia',    collection: 'blossom', image: 'assets/collections/blossom/vela-buque-e-cia.webp',    desc: 'Buquê de velas floridas para presentear.',
-      variants: [ { id: 'unid',  label: 'Unidade',                     price: 20  }, { id: 'kit5',  label: 'Kit 5 und',                   price: 90  } ] },
+      variants: [ { id: 'unid',  label: 'Unidade',                     price: 15  }, { id: 'kit5',  label: 'Kit 5 und',                   price: 90  } ] },
     { id: 'mini-rosa',      name: 'Mini Rosa',      collection: 'blossom', image: 'assets/collections/blossom/vela-mini-rosa.webp',      desc: 'Rosinha em cera com acabamento artesanal.',
       variants: [ { id: 'unid',  label: 'Unidade',                     price: 25  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 240 } ] },
 
@@ -44,7 +44,7 @@
     { id: 'love',           name: 'Vela Love',      collection: 'love',    image: 'assets/collections/love/vela-love.webp',             desc: 'Aroma envolvente para momentos especiais.',
       variants: [ { id: 'g150', label: '150G', price: 35 }, { id: 'g250', label: '250G', price: 47 } ] },
     { id: 'dois-coracoes',  name: 'Dois Corações',  collection: 'love',    image: 'assets/collections/love/vela-dois-coracoes.webp',    desc: 'Dois corações de cera que derretem ao calor.',
-      variants: [ { id: 'g150', label: '150G', price: 35 }, { id: 'g250', label: '250G', price: 47 } ] },
+      variants: [ { id: 'g150', label: '150G', price: 25 }, { id: 'g250', label: '250G', price: 47 } ] },
     { id: 'buque-premium',  name: 'Buquê Premium',  collection: 'love',    image: 'assets/collections/love/vela-buque-premium.webp',    desc: 'Buquê premium em gramaturas especiais.',
       variants: [ { id: 'g150', label: '150G', price: 33 }, { id: 'g250', label: '250G', price: 45 } ] },
 
