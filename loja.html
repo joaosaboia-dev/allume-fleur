@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loja — Allume Fleur</title>
+  <meta name="description" content="Catálogo de velas artesanais Allume Fleur. Explore nossas coleções e monte seu pedido diretamente pelo WhatsApp." />
+  <link rel="canonical" href="https://allumefleur.com.br/loja.html" />
+  <link rel="icon" href="assets/identity/logo.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/shop.css" />
+</head>
+<body>
+
+  <!-- nav -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <a href="index.html">
+        <img src="assets/identity/logo.webp" alt="Allume Fleur" />
+      </a>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html" class="nav-link">Início</a></li>
+      <li><a href="loja.html" class="nav-link nav-link-active">Loja</a></li>
+      <li><a href="index.html#personalizados" class="nav-link">Personalizados</a></li>
+      <li><a href="index.html#contato" class="nav-link">Contato</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="nav-cart" id="cart-toggle" aria-label="Abrir carrinho">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <span class="nav-cart-count" id="cart-count" aria-live="polite">0</span>
+      </button>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+
+  <!-- hero -->
+  <header class="shop-hero">
+    <div class="hero-eyebrow">Nossa loja</div>
+    <h1 class="shop-hero-title">Escolha sua <em>chama</em></h1>
+    <p class="shop-hero-desc">
+      Filtre pelas coleções no menu lateral, monte seu pedido e finalize tudo em segundos pelo WhatsApp.
+    </p>
+  </header>
+
+
+  <!-- layout: sidebar + grade -->
+  <div class="shop-layout">
+
+    <aside class="shop-sidebar" aria-label="Filtrar por coleção">
+      <h2 class="sidebar-title">Coleções</h2>
+      <ul class="sidebar-list" id="category-list"></ul>
+    </aside>
+
+    <main class="shop-main">
+      <div class="shop-toolbar">
+        <span class="shop-result" id="shop-result">Carregando produtos…</span>
+      </div>
+      <div class="product-grid" id="product-grid"></div>
+      <div class="product-empty" id="product-empty" hidden>
+        Nenhum produto encontrado nesta coleção.
+      </div>
+    </main>
+
+  </div>
+
+
+  <!-- carrinho (drawer) -->
+  <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Carrinho de compras">
+
+    <header class="cart-header">
+      <h2 class="cart-title">Seu carrinho</h2>
+      <button class="cart-close" id="cart-close" aria-label="Fechar carrinho">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </header>
+
+    <div class="cart-body">
+      <div class="cart-empty" id="cart-empty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/>
+          <path d="M3 6h18"/>
+          <path d="M16 10a4 4 0 0 1-8 0"/>
+        </svg>
+        <p>Seu carrinho ainda está vazio.</p>
+        <span>Explore as coleções e adicione suas velas favoritas.</span>
+      </div>
+      <ul class="cart-items" id="cart-items"></ul>
+    </div>
+
+    <footer class="cart-footer">
+      <div class="cart-summary">
+        <span>Itens selecionados</span>
+        <strong id="cart-summary-count">0</strong>
+      </div>
+      <button class="cart-checkout" id="cart-checkout" disabled>
+        Finalizar Pedido
+      </button>
+    </footer>
+
+  </aside>
+
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <footer class="shop-footer">
+    <p>© 2026 Allume Fleur — Delicadeza em cada chama.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
+
+</body>
+</html>
