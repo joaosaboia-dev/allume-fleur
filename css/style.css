@@ -105,6 +105,7 @@ nav {
   gap: 36px;
   list-style: none;
   align-items: center;
+  margin-right: 40px;
 }
 .nav-links a {
   font-size: var(--text-xs);

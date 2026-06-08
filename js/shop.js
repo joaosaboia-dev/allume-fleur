@@ -12,7 +12,8 @@
     { key: 'love',    label: 'Love'    },
     { key: 'encanto', label: 'Encanto' },
     { key: 'golden',  label: 'Golden'  },
-    { key: 'latte',   label: 'Latte'   }
+    { key: 'latte',   label: 'Latte'   },
+    { key: 'sweet-fruits', label: 'Sweet Fruits' }
   ];
 
   var AROMAS = ['Bergamota', 'Cereja Avelã', 'Jasmin Floral', 'Lavanda', 'Morango'];
@@ -25,6 +26,10 @@
       variants: [ { id: 'unid',  label: 'Unidade',                     price: 15  }, { id: 'kit5',  label: 'Kit 5 und',                   price: 90  } ] },
     { id: 'mini-rosa',      name: 'Mini Rosa',      collection: 'blossom', image: 'assets/collections/blossom/vela-mini-rosa.webp',      desc: 'Rosinha em cera com acabamento artesanal.',
       variants: [ { id: 'unid',  label: 'Unidade',                     price: 25  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 240 } ] },
+    { id: 'margarida-premium', name: 'Margarida Premium', collection: 'blossom', image: 'assets/collections/blossom/vela-margarida-premium.webp',
+      images: [ 'assets/collections/blossom/vela-margarida-premium.webp', 'assets/collections/blossom/vela-margarida-premium-superior.webp' ],
+      desc: 'Margaridas premium em kit personalizável para presentear.',
+      variants: [ { id: 'kit10', label: 'Kit 10 und + personalização', price: 260 } ] },
 
     /* Ocean */
     { id: 'mini-margarida', name: 'Mini Margarida', collection: 'ocean',   image: 'assets/collections/ocean/vela-mini-margarida.webp',  desc: 'Margaridinha delicada, perfeita para lembrancinhas.',
@@ -53,6 +58,10 @@
       variants: [ { id: 'unid',  label: 'Unidade',                     price: 12  }, { id: 'kit30', label: 'Kit 30 und',                 price: 300 } ] },
     { id: 'urso-premium',   name: 'Urso Premium',   collection: 'encanto', image: 'assets/collections/encanto/vela-urso-premium.webp',  desc: 'Ursinho premium em copo de vidro personalizado.',
       variants: [ { id: 'unid',  label: 'Unidade',                     price: 30  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 290 } ] },
+    { id: 'afeto',          name: 'Vela Afeto',     collection: 'encanto', image: 'assets/collections/encanto/vela-afeto-aniversario.webp',
+      images: [ 'assets/collections/encanto/vela-afeto-aniversario.webp', 'assets/collections/encanto/vela-afeto-casamento.webp' ],
+      desc: 'Lembrancinhas afetivas para casamentos e aniversários.',
+      variants: [ { id: 'kit50', label: 'Kit 50 und + personalização', price: 150 } ] },
 
     /* Golden */
     { id: 'golden',         name: 'Vela Golden',    collection: 'golden',  image: 'assets/collections/golden/vela-golden.webp',         desc: 'Acabamento metálico em tons âmbar.',
@@ -60,7 +69,11 @@
 
     /* Latte */
     { id: 'latte',          name: 'Vela Latte',     collection: 'latte',   image: 'assets/collections/latte/vela-latte.webp',           desc: 'Camadas inspiradas em café especial.',
-      variants: [ { id: 'g250', label: '250G', price: 48 } ] }
+      variants: [ { id: 'g250', label: '250G', price: 48 } ] },
+
+    /* Sweet Fruits */
+    { id: 'merengue',       name: 'Vela Merengue',  collection: 'sweet-fruits', image: 'assets/collections/sweet-fruits/vela-merengue.webp', desc: 'Inspirada no merengue, com aroma frutado e adocicado.',
+      variants: [ { id: 'unid', label: 'Unidade · 150G', price: 48 } ] }
   ];
 
   var WHATSAPP_NUMBER = '5592994365884';
@@ -141,6 +154,11 @@
     return null;
   }
 
+  /* Lista de imagens do produto: usa `images` quando há mais de uma; senão, a única `image` */
+  function getImages(product) {
+    return (product.images && product.images.length) ? product.images : [product.image];
+  }
+
   function getTotalCount() {
     var total = 0;
     for (var key in state.cart) {
@@ -213,6 +231,45 @@
   }
 
 
+  /* ── Galeria do card ─────────────────────────────
+     Mini-galeria por card: imagens empilhadas com fade. Quando há mais de uma
+     imagem, exibe setas de navegação + indicadores (dots). Sem JS de detalhe:
+     tudo acontece na própria vitrine.                                          */
+
+  var CHEVRON_LEFT  = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>';
+  var CHEVRON_RIGHT = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>';
+
+  function renderGallery(p) {
+    var images = getImages(p);
+    var multi  = images.length > 1;
+
+    var slides = images.map(function (src, i) {
+      var label = escapeHtml(p.name) + (multi ? ' — imagem ' + (i + 1) : '');
+      return '<img class="product-slide' + (i === 0 ? ' is-active' : '') + '" src="' + src
+        + '" alt="' + label + '"' + (i === 0 ? '' : ' loading="lazy"') + ' />';
+    }).join('');
+
+    var controls = '';
+    if (multi) {
+      var dots = images.map(function (src, i) {
+        return '<button type="button" class="gallery-dot' + (i === 0 ? ' is-active' : '')
+          + '" data-index="' + i + '" aria-label="Ver imagem ' + (i + 1) + '"></button>';
+      }).join('');
+
+      controls =
+          '<button type="button" class="gallery-nav gallery-prev" data-gallery="prev" aria-label="Imagem anterior">' + CHEVRON_LEFT + '</button>'
+        + '<button type="button" class="gallery-nav gallery-next" data-gallery="next" aria-label="Próxima imagem">' + CHEVRON_RIGHT + '</button>'
+        + '<div class="gallery-dots" aria-label="Selecionar imagem">' + dots + '</div>';
+    }
+
+    return '<div class="product-image' + (multi ? ' has-gallery' : '') + '" data-active="0">'
+      +   '<div class="product-media">' + slides + '</div>'
+      +   '<span class="product-collection">' + getCollectionLabel(p.collection) + '</span>'
+      +   controls
+      + '</div>';
+  }
+
+
   /* ── Grade de Produtos ───────────────────────── */
 
   function renderProducts() {
@@ -246,10 +303,7 @@
       var qty = state.cart[buildKey(p.id, defaultVariant.id, AROMAS[0])] || 0;
 
       return '<article class="product-card" data-product-id="' + p.id + '">'
-        + '<div class="product-image">'
-        +   '<img src="' + p.image + '" alt="' + escapeHtml(p.name) + '" loading="lazy" />'
-        +   '<span class="product-collection">' + getCollectionLabel(p.collection) + '</span>'
-        + '</div>'
+        + renderGallery(p)
         + '<div class="product-body">'
         +   '<h3 class="product-name">' + escapeHtml(p.name) + '</h3>'
         +   '<p class="product-desc">' + escapeHtml(p.desc) + '</p>'
@@ -330,6 +384,56 @@
     var card = select.closest('.product-card');
     if (card) updateCardAction(card);
   });
+
+
+  /* ── Galeria: navegação (setas, dots, swipe) ─────
+     Delegação no grid (persiste entre re-renders). Os botões da galeria não têm
+     [data-action], então não disparam o handler de carrinho acima.            */
+
+  function setGallerySlide(gallery, index) {
+    var slides = gallery.querySelectorAll('.product-slide');
+    var dots   = gallery.querySelectorAll('.gallery-dot');
+    var n = slides.length;
+    if (n <= 1) return;
+    index = ((index % n) + n) % n; /* circular */
+    for (var i = 0; i < n; i++) {
+      slides[i].classList.toggle('is-active', i === index);
+      if (dots[i]) dots[i].classList.toggle('is-active', i === index);
+    }
+    gallery.setAttribute('data-active', index);
+  }
+
+  els.productGrid.addEventListener('click', function (e) {
+    var nav = e.target.closest('.gallery-nav');
+    var dot = e.target.closest('.gallery-dot');
+    if (!nav && !dot) return;
+    var gallery = (nav || dot).closest('.product-image');
+    if (!gallery) return;
+    var current = parseInt(gallery.getAttribute('data-active'), 10) || 0;
+    if (nav) {
+      setGallerySlide(gallery, current + (nav.getAttribute('data-gallery') === 'next' ? 1 : -1));
+    } else {
+      setGallerySlide(gallery, parseInt(dot.getAttribute('data-index'), 10) || 0);
+    }
+  });
+
+  /* Swipe horizontal em telas touch */
+  var touchStartX = null, touchGallery = null;
+  els.productGrid.addEventListener('touchstart', function (e) {
+    var gallery = e.target.closest('.product-image.has-gallery');
+    if (!gallery) { touchGallery = null; return; }
+    touchStartX  = e.touches[0].clientX;
+    touchGallery = gallery;
+  }, { passive: true });
+  els.productGrid.addEventListener('touchend', function (e) {
+    if (!touchGallery || touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) {
+      var current = parseInt(touchGallery.getAttribute('data-active'), 10) || 0;
+      setGallerySlide(touchGallery, current + (dx < 0 ? 1 : -1));
+    }
+    touchStartX = null; touchGallery = null;
+  }, { passive: true });
 
 
   /* ── Renderização: drawer ─────────────────────── */
