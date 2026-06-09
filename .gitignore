@@ -1,4 +1,4 @@
-# Configurações locais do Claude Code (pessoais, não versionar)
+# Configurações locais
 .claude/settings.local.json
 .claude/
 CLAUDE.md
