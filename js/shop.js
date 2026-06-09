@@ -16,7 +16,7 @@
     { key: 'sweet-fruits', label: 'Sweet Fruits' }
   ];
 
-  var AROMAS = ['Bergamota', 'Cereja Avelã', 'Jasmin Floral', 'Lavanda', 'Morango'];
+  var AROMAS = ['Bergamota', 'Cereja Avelã', 'Jasmin Floral', 'Lavanda', 'Morango', 'Menta', 'Erva Doce'];
 
   var PRODUCTS = [
     /* Blossom */
