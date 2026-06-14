@@ -215,6 +215,14 @@ nav .nav-links { margin-left: auto; }
 .product-slide.is-active { opacity: 1; }
 .product-card:hover .product-slide.is-active { transform: scale(1.05); }
 
+/* Fallback de imagem: quando o onerror (em shop.js) marca a img com .img-failed,
+   mostramos um fundo neutro da marca no lugar do ícone de imagem quebrada.
+   `color: transparent` esconde o texto alternativo que o navegador exibiria. */
+.img-failed {
+  background: var(--cream-dark);
+  color: transparent;
+}
+
 /* Setas: surgem no hover (desktop); sempre visíveis em telas touch (ver @media hover:none) */
 .gallery-nav {
   position: absolute;
