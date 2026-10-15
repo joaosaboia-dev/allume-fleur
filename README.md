@@ -39,14 +39,18 @@ O projeto é dividido em duas páginas:
 
 | Coleção | Descrição |
 |---------|-----------|
-| Blossom | Flores esculpidas em cera — margaridas, rosas e buquês |
-| Ocean | Velas gel com areia e conchas do mar |
+| Fleur d'Amour | Flores esculpidas em cera — margaridas, rosas e buquês |
+| L'Azul | Velas gel com areia e conchas do mar |
 | Calm | Aromáticas com fragrâncias naturais (Lavanda, Bamboo…) |
 | Love | Coraçõezinhos de cera que derretem ao calor da chama |
 | Encanto | Lembrancinhas para festas — ursinhos, leõezinhos |
 | Golden | Acabamento metálico âmbar |
 | Latte | Camadas inspiradas em cafés especiais |
-| Sweet Fruits | Merengues com aroma adocicado |
+| Celestial Allure | Degradês e brilho de noite estrelada |
+| Chapéu Seletor | Velas temáticas para fãs de magia |
+| Douce Cream | Creme batido em cera — café, morango e limão |
+| Happy Hour | Inspiradas em drinks, com aroma pré-determinado |
+| Sweet Fruits | Merengues e frutas com aroma adocicado |
 
 ---
 

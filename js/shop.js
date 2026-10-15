@@ -9,87 +9,134 @@
      Para mudar preços ou adicionar produtos, basta editar estas listas.       */
 
   var COLLECTIONS = [
-    { key: 'all',     label: 'Todas as coleções' },
-    { key: 'blossom', label: 'Blossom' },
-    { key: 'ocean',   label: 'Ocean'   },
-    { key: 'calm',    label: 'Calm'    },
-    { key: 'love',    label: 'Love'    },
-    { key: 'encanto', label: 'Encanto' },
-    { key: 'golden',  label: 'Golden'  },
-    { key: 'latte',   label: 'Latte'   },
-    { key: 'happy-hour',   label: 'Happy Hour'   },
-    { key: 'sweet-fruits', label: 'Sweet Fruits' }
+    { key: 'all',              label: 'Todas as coleções' },
+    { key: 'fleur-damour',     label: "Fleur d'Amour"     },
+    { key: 'l-azul',           label: "L'Azul"            },
+    { key: 'calm',             label: 'Calm'              },
+    { key: 'love',             label: 'Love'              },
+    { key: 'encanto',          label: 'Encanto'           },
+    { key: 'golden',           label: 'Golden'            },
+    { key: 'latte',            label: 'Latte'             },
+    { key: 'celestial-allure', label: 'Celestial Allure'  },
+    { key: 'chapeu-seletor',   label: 'Chapéu Seletor'    },
+    { key: 'douce-cream',      label: 'Douce Cream'       },
+    { key: 'happy-hour',       label: 'Happy Hour'        },
+    { key: 'sweet-fruits',     label: 'Sweet Fruits'      }
   ];
 
-  var AROMAS = ['Baunilha', 'Bergamota', 'Cereja Avelã', 'Erva Doce', 'Jasmin Floral', 'Lavanda', 'Maça com Canela', 'Menta', 'Morango', 'Verbena'];
+  var AROMAS = ['Baby', 'Bergamota', 'Café', 'Cereja & Avelã', 'Frutas Vermelhas', 'Maçã com Canela', 'Maçã Verde', 'Morango c/ Champanhe', 'Vanilla', 'Vanilla c/ Coco', 'Verbena'];
 
-  /* Coleções com aroma pré-determinado — o cliente NÃO escolhe o aroma */
+  /* Coleções com aroma pré-determinado — o cliente NÃO escolhe o aroma.
+     Um produto avulso pode fugir da regra da coleção com `noAroma: true`
+     (esconde o seletor) ou com sua própria lista em `aromas`.                */
   var NO_AROMA_COLLECTIONS = ['sweet-fruits', 'happy-hour'];
 
   var PRODUCTS = [
-    /* Blossom */
-    { id: 'blossom',        name: 'Vela Blossom',   collection: 'blossom', image: 'assets/collections/blossom/vela-blossom.webp',       desc: 'Flor esculpida em cera, tons pastéis suaves.',
-      variants: [ { id: 'unid',  label: 'Unidade 150g',                     price: 30  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 290 } ] },
-    { id: 'buque-cia',      name: 'Buquê e Cia',    collection: 'blossom', image: 'assets/collections/blossom/vela-buque-e-cia.webp',    desc: 'Buquê de velas floridas para presentear.',
-      variants: [ { id: 'unid',  label: 'Unidade',                     price: 20  }, { id: 'kit5',  label: 'Kit 5 und',                   price: 75  } ] },
-    { id: 'mini-rosa',      name: 'Mini Rosa',      collection: 'blossom', image: 'assets/collections/blossom/vela-mini-rosa.webp',      desc: 'Rosinha em cera com acabamento artesanal.',
-      variants: [ { id: 'unid',  label: 'Unidade 70g',                     price: 25  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 190 } ] },
-    { id: 'margarida-premium', name: 'Margarida Premium', collection: 'blossom', image: 'assets/collections/blossom/vela-margarida-premium.webp',
-      images: [ 'assets/collections/blossom/vela-margarida-premium.webp', 'assets/collections/blossom/vela-margarida-premium-superior.webp' ],
-      desc: 'Margaridas premium em kit personalizável para presentear.',
-      variants: [ { id: 'kit10', label: 'Kit 10 und + personalização', price: 240 } ] },
+    /* Fleur d'Amour */
+    { id: 'blossom',        name: 'Vela Blossom',   collection: 'fleur-damour', image: 'assets/collections/fleur-damour/vela-blossom.webp', desc: 'Flor esculpida em cera, tons pastéis suaves.',
+      variants: [ { id: 'g150',  label: 'Unidade 150g',                price: 35  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 300 } ] },
+    { id: 'margarida',      name: 'Vela Margarida', collection: 'fleur-damour', image: 'assets/collections/fleur-damour/vela-margarida.webp',
+      images: [ 'assets/collections/fleur-damour/vela-margarida.webp', 'assets/collections/fleur-damour/vela-margarida-superior.webp' ],
+      desc: 'Margaridas em kit personalizável para presentear.',
+      variants: [ { id: 'kit10', label: 'Kit 10 und + personalização', price: 300 } ] },
+    { id: 'rosea',          name: 'Vela Roséa',     collection: 'fleur-damour', image: 'assets/collections/fleur-damour/vela-rosea.webp',    desc: 'Rosinha em cera com acabamento artesanal.',
+      variants: [ { id: 'unid',  label: 'Unidade 70g',                 price: 25  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 200 } ] },
+    { id: 'l-amour',        name: "Vela L'Amour",   collection: 'fleur-damour', image: 'assets/collections/fleur-damour/vela-l-amour.webp',  desc: 'Coração floral em cera, em kit para lembrancinhas românticas.',
+      variants: [ { id: 'kit30', label: 'Kit 30 und + personalização', price: 270 } ] },
 
-    /* Ocean */
-    { id: 'flores-flutuantes', name: 'Flores Flutuantes', collection: 'ocean', image: 'assets/collections/ocean/vela-flores-flutuantes.webp', desc: 'Flores delicadas que flutuam na superfície — charme artesanal para mesas e eventos.',
-      variants: [ { id: 'kit10', label: 'Kit 10 und + personalização', price: 60  }, { id: 'kit20', label: 'Kit 20 und + personalização', price: 110 } ] },
-    { id: 'mini-ocean',     name: 'Mini Ocean',     collection: 'ocean',   image: 'assets/collections/ocean/vela-mini-ocean.webp',      desc: 'Mini vela gel com conchas e areia real.',
-      variants: [ { id: 'unid',  label: 'Unidade 40g',                     price: 16  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 120 } ] },
-    { id: 'ocean-premium',  name: 'Ocean Premium',  collection: 'ocean',   image: 'assets/collections/ocean/vela-ocean-premium.webp',   desc: 'Vela gel premium, disponível em duas gramaturas.',
-      variants: [ { id: 'g70',   label: 'Unidade 70g',  price: 35 }, { id: 'g250', label: 'Unidade 250g', price: 55 } ] },
+    /* L'Azul */
+    { id: 'mini-ocean',     name: 'Mini Ocean',     collection: 'l-azul', image: 'assets/collections/l-azul/vela-mini-ocean.webp',    desc: 'Mini vela gel com conchas e areia real.',
+      variants: [ { id: 'unid',  label: 'Unidade 40g',                 price: 16  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 120 } ] },
+    { id: 'ocean-premium',  name: 'Ocean Premium',  collection: 'l-azul', image: 'assets/collections/l-azul/vela-ocean-premium.webp', desc: 'Vela gel premium, disponível em duas gramaturas.',
+      variants: [ { id: 'g70',   label: 'Unidade 70g',  price: 35 }, { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+    { id: 'douce-mer',      name: 'Vela Douce Mer', collection: 'l-azul', image: 'assets/collections/l-azul/vela-douce-mer.webp',     desc: 'Vela gel azul translúcida, em kit para mesas e lembranças de praia.',
+      variants: [ { id: 'kit10', label: 'Kit 10 und + personalização', price: 150 } ] },
+    { id: 'mare',           name: 'Vela Maré',      collection: 'l-azul', image: 'assets/collections/l-azul/vela-mare.webp',          desc: 'O movimento do mar em cera, em kit para presentear.',
+      variants: [ { id: 'kit10', label: 'Kit 10 und + personalização', price: 150 } ] },
 
     /* Calm */
-    { id: 'calm',           name: 'Vela Calm',      collection: 'calm',    image: 'assets/collections/calm/vela-calm.webp',             desc: 'Aroma relaxante para momentos de paz.',
-      variants: [ { id: 'unid',  label: 'Unidade 150g',                     price: 26  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 250 } ] },
-    { id: 'mini-calm',      name: 'Mini Calm',      collection: 'calm',    image: 'assets/collections/calm/vela-mini-calm.webp',        desc: 'Versão mini da linha relaxante.',
-      variants: [ { id: 'unid',  label: 'Unidade 40g',                     price: 13  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 95  } ] },
+    { id: 'calm',           name: 'Vela Calm',      collection: 'calm', image: 'assets/collections/calm/vela-calm.webp',       desc: 'Aroma relaxante para momentos de paz.',
+      variants: [ { id: 'g150',  label: 'Unidade 150g',                price: 35  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 300 } ] },
+    { id: 'mini-calm',      name: 'Mini Calm',      collection: 'calm', image: 'assets/collections/calm/vela-mini-calm.jpeg',  desc: 'Versão mini da linha relaxante.',
+      variants: [ { id: 'unid',  label: 'Unidade 40g',                 price: 13  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 95  } ] },
 
     /* Love */
-    { id: 'love',           name: 'Vela Love',      collection: 'love',    image: 'assets/collections/love/vela-love.webp',             desc: 'Aroma envolvente para momentos especiais.',
-      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 }, { id: 'g250', label: 'Unidade 250g', price: 47 } ] },
-    { id: 'dois-coracoes',  name: 'Dois Corações',  collection: 'love',    image: 'assets/collections/love/vela-dois-coracoes.webp',    desc: 'Dois corações de cera que derretem ao calor.',
-      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 }, { id: 'g250', label: 'Unidade 250g', price: 47 } ] },
-    { id: 'buque-premium',  name: 'Buquê Premium',  collection: 'love',    image: 'assets/collections/love/vela-buque-premium.webp',    desc: 'Buquê premium em gramaturas especiais.',
-      variants: [ { id: 'g150', label: 'Unidade 150g', price: 33 }, { id: 'g250', label: 'Unidade 250g', price: 45 } ] },
+    { id: 'love',           name: 'Vela Love',         collection: 'love', image: 'assets/collections/love/vela-love.webp',          desc: 'Aroma envolvente para momentos especiais.',
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 }, { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+    { id: 'dois-coracoes',  name: 'Dois Corações',     collection: 'love', image: 'assets/collections/love/vela-dois-coracoes.webp', desc: 'Dois corações de cera que derretem ao calor.',
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 }, { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+    { id: 'buque',          name: 'Vela Buquê',        collection: 'love', image: 'assets/collections/love/vela-buque.webp',         desc: 'Buquê de velas em gramaturas especiais.',
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 }, { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+    { id: 'maison-rose',    name: 'Vela Maison Rose',  collection: 'love', image: 'assets/collections/love/vela-maison-rose.webp',   desc: 'Rosas de cera em arranjo delicado para presentear.',
+      variants: [ { id: 'unid', label: 'Unidade',      price: 15 }, { id: 'kit5',  label: 'Kit 5 und',    price: 50 } ] },
+    { id: 'lips-glow',      name: 'Vela Lips Glow',    collection: 'love', image: 'assets/collections/love/vela-lips-glow.webp',     desc: 'Lábios esculpidos em cera, com brilho e atitude.',
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 } ] },
+    { id: 'bella-gem',      name: 'Vela Bella Gem',    collection: 'love', image: 'assets/collections/love/vela-bella-gem.jpeg',     desc: 'Joia em cera com acabamento premium.',
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 65 } ] },
 
     /* Encanto */
-    { id: 'leao',           name: 'Leãozinho',      collection: 'encanto', image: 'assets/collections/encanto/vela-leao.webp',          desc: 'Lembrancinha colorida para festas infantis.',
-      variants: [ { id: 'unid',  label: 'Unidade',                     price: 12  }, { id: 'kit30', label: 'Kit 30 und',                 price: 280 } ] },
-    { id: 'urso-premium',   name: 'Urso Premium',   collection: 'encanto', image: 'assets/collections/encanto/vela-urso-premium.webp',  desc: 'Ursinho premium em copo de vidro personalizado.',
-      variants: [ { id: 'unid',  label: 'Unidade 150g',                     price: 30  }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 290 } ] },
-    { id: 'cubo',           name: 'Vela Cubo',      collection: 'encanto', image: 'assets/collections/encanto/vela-cubo.webp',
-      images: [ 'assets/collections/encanto/vela-cubo.webp', 'assets/collections/encanto/vela-cubo-variante.webp' ],
-      desc: 'Cubos de cera personalizáveis — lembrancinha elegante para presentear em grande quantidade.',
-      variants: [ { id: 'kit50', label: 'Kit 50 und + personalização', price: 300 } ] },
-    { id: 'afeto',          name: 'Vela Afeto',     collection: 'encanto', image: 'assets/collections/encanto/vela-afeto-aniversario.webp',
+    { id: 'leao-safari',    name: 'Kit Leão Safari',   collection: 'encanto', image: 'assets/collections/encanto/vela-leao-safari.webp', desc: 'Lembrancinha colorida para festas infantis com tema safari.',
+      variants: [ { id: 'kit30', label: 'Kit 30 und',  price: 240 } ] },
+    { id: 'baby',           name: 'Vela Baby',         collection: 'encanto', image: 'assets/collections/encanto/vela-baby.webp',       desc: 'Ursinho em copo de vidro personalizado.',
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 }, { id: 'kit10', label: 'Kit 10 und + personalização', price: 250 } ] },
+    { id: 'kit-urso',       name: 'Kit Vela Urso',     collection: 'encanto', image: 'assets/collections/encanto/vela-kit-urso.jpeg',    desc: 'Ursinhos em cera, em kit para lembrancinhas de chá de bebê.',
+      variants: [ { id: 'kit30', label: 'Kit 30 und',  price: 210 } ] },
+    { id: 'perola',         name: 'Vela Pérola',       collection: 'encanto', image: 'assets/collections/encanto/vela-perola.webp',
+      images: [ 'assets/collections/encanto/vela-perola.webp', 'assets/collections/encanto/vela-perola-variante.webp', 'assets/collections/encanto/vela-perola-variante-2.jpeg' ],
+      desc: 'Pérolas de cera personalizáveis — lembrancinha elegante para presentear em grande quantidade.',
+      variants: [ { id: 'kit50', label: 'Kit 50 und + personalização', price: 450 } ] },
+    { id: 'afeto',          name: 'Vela Afeto',        collection: 'encanto', image: 'assets/collections/encanto/vela-afeto-aniversario.webp',
       images: [ 'assets/collections/encanto/vela-afeto-aniversario.webp', 'assets/collections/encanto/vela-afeto-casamento.webp' ],
       desc: 'Lembrancinhas afetivas para casamentos e aniversários.',
-      variants: [ { id: 'kit50', label: 'Kit 50 und + personalização', price: 150 } ] },
+      variants: [ { id: 'kit50', label: 'Kit 50 und + personalização', price: 250 } ] },
+    { id: 'caixa-box',      name: 'Vela Caixa Box Personalizada', collection: 'encanto', noAroma: true, image: 'assets/collections/encanto/vela-caixa-box-1.webp',
+      images: [ 'assets/collections/encanto/vela-caixa-box-1.webp', 'assets/collections/encanto/vela-caixa-box-2.webp', 'assets/collections/encanto/vela-caixa-box-3.webp' ],
+      desc: 'Caixa personalizada montada sob medida — o aroma é combinado junto com a encomenda.',
+      variants: [ { id: 'unid',  label: 'Unidade',     price: 99 } ] },
+    { id: 'doce-sorriso',   name: 'Vela Doce Sorriso', collection: 'encanto', image: 'assets/collections/encanto/vela-doce-sorriso.webp', desc: 'Sorrisos em cera, em kit para lembrancinhas alegres.',
+      variants: [ { id: 'kit30', label: 'Kit 30 und',  price: 180 } ] },
+    { id: 'flores-no-card', name: 'Vela Flores no Card', collection: 'encanto', image: 'assets/collections/encanto/vela-flores-no-card-1.webp',
+      images: [ 'assets/collections/encanto/vela-flores-no-card-1.webp', 'assets/collections/encanto/vela-flores-no-card-2.webp', 'assets/collections/encanto/vela-flores-no-card-3.webp' ],
+      desc: 'Florzinha de cera montada em card personalizado.',
+      variants: [ { id: 'kit10', label: 'Kit 10 und + personalização', price: 70 } ] },
 
     /* Golden */
-    { id: 'golden',         name: 'Vela Golden',    collection: 'golden',  image: 'assets/collections/golden/vela-golden.webp',         desc: 'Acabamento metálico em tons âmbar.',
-      variants: [ { id: 'g150', label: 'Unidade 150g', price: 36 } ] },
-    { id: 'aura-golden',    name: 'Vela Aura Golden', collection: 'golden', image: 'assets/collections/golden/vela-golden-aura.webp',
-      images: [ 'assets/collections/golden/vela-golden-aura.webp', 'assets/collections/golden/vela-golden-aura-superior.webp' ],
+    { id: 'golden',          name: 'Vela Golden',          collection: 'golden', image: 'assets/collections/golden/vela-golden.webp', desc: 'Acabamento metálico em tons âmbar.',
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 } ] },
+    { id: 'brilho-imperial', name: 'Vela Brilho Imperial', collection: 'golden', image: 'assets/collections/golden/vela-brilho-imperial.webp',
+      images: [ 'assets/collections/golden/vela-brilho-imperial.webp', 'assets/collections/golden/vela-brilho-imperial-superior.webp' ],
       desc: 'Brilho dourado intenso com acabamento premium.',
-      variants: [ { id: 'g250', label: 'Unidade 250g', price: 52 } ] },
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+    { id: 'aura-golden',     name: 'Vela Aura Golden',     collection: 'golden', image: 'assets/collections/golden/vela-aura-golden.jpeg', desc: 'Aura dourada translúcida, luz quente e sofisticada.',
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
 
     /* Latte */
-    { id: 'latte',          name: 'Vela Latte',     collection: 'latte',   image: 'assets/collections/latte/vela-latte.webp',
+    { id: 'latte',          name: 'Vela Latte',     collection: 'latte', image: 'assets/collections/latte/vela-latte.webp',
       images: [ 'assets/collections/latte/vela-latte.webp', 'assets/collections/latte/vela-latte-variante-caramelo.webp', 'assets/collections/latte/vela-latte-variante-mochi.webp', 'assets/collections/latte/vela-latte-variante-rosa.webp' ],
       desc: 'Camadas inspiradas em café especial.',
-      variants: [ { id: 'g250', label: 'Unidade 250g', price: 48 } ] },
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
 
-    /* Happy Hour (aroma pré-determinado) */
+    /* Celestial Allure */
+    { id: 'nuit-etoilee',   name: 'Vela Nuit Étoilée', collection: 'celestial-allure', image: 'assets/collections/celestial-allure/vela-nuit-etoilee.jpeg', desc: 'Noite estrelada em cera — brilho discreto e aroma envolvente.',
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+    { id: 'nuance',         name: 'Vela Nuance',       collection: 'celestial-allure', image: 'assets/collections/celestial-allure/vela-nuance.jpeg',       desc: 'Degradê suave de cores, com acabamento acetinado.',
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+
+    /* Chapéu Seletor */
+    { id: 'a-chama-revela', name: 'Vela A Chama Revela', collection: 'chapeu-seletor', image: 'assets/collections/chapeu-seletor/vela-a-chama-revela.jpeg',
+      images: [ 'assets/collections/chapeu-seletor/vela-a-chama-revela.jpeg', 'assets/collections/chapeu-seletor/vela-a-chama-revela-2.jpeg', 'assets/collections/chapeu-seletor/vela-a-chama-revela-3.jpeg' ],
+      desc: 'A chama revela a sua casa — vela temática para fãs de magia.',
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 70 } ] },
+    { id: 'lumos',          name: 'Vela Lumos',          collection: 'chapeu-seletor', image: 'assets/collections/chapeu-seletor/vela-lumos.jpeg', desc: 'Luz acesa na ponta da varinha — aroma e encanto em cera.',
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 55 } ] },
+
+    /* Douce Cream (aromas próprios: Café, Morango e Limão) */
+    { id: 'douce-cream',    name: 'Vela Douce Cream', collection: 'douce-cream', aromas: ['Café', 'Morango', 'Limão'], image: 'assets/collections/douce-cream/vela-douce-cream-cafe.jpeg',
+      images: [ 'assets/collections/douce-cream/vela-douce-cream-cafe.jpeg', 'assets/collections/douce-cream/vela-douce-cream-morango.jpeg', 'assets/collections/douce-cream/vela-douce-cream-limao.jpeg' ],
+      desc: 'Creme batido em cera, nos aromas café, morango e limão.',
+      variants: [ { id: 'g250', label: 'Unidade 250g', price: 50 } ] },
+
+    /* Happy Hour (aroma pré-determinado — fora da padronização de preço por tamanho) */
     { id: 'mojito',         name: 'Vela Mojito',    collection: 'happy-hour', image: 'assets/collections/happy-hour/vela-mojito.webp', desc: 'Inspirada no clássico drink, com aroma cítrico refrescante de hortelã e limão.',
       variants: [ { id: 'g250', label: 'Unidade 250g', price: 65 } ] },
     { id: 'strawberry-spritz', name: 'Vela Strawberry Spritz', collection: 'happy-hour', image: 'assets/collections/happy-hour/vela-strawberry-spritz.webp', desc: 'Aroma frutado de morango com toque efervescente, inspirada no spritz.',
@@ -97,9 +144,11 @@
 
     /* Sweet Fruits (aroma pré-determinado) */
     { id: 'doce-bergamota', name: 'Vela Doce Bergamota', collection: 'sweet-fruits', image: 'assets/collections/sweet-fruits/vela-doce-bergamota.webp', desc: 'Aroma cítrico e adocicado de bergamota, irresistível do visual ao perfume.',
-      variants: [ { id: 'unid', label: 'Unidade 150g', price: 48 } ] },
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 } ] },
     { id: 'merengue',       name: 'Vela Merengue',  collection: 'sweet-fruits', image: 'assets/collections/sweet-fruits/vela-merengue.webp', desc: 'Inspirada no merengue, com aroma frutado e adocicado.',
-      variants: [ { id: 'unid', label: 'Unidade 150g', price: 48 } ] }
+      variants: [ { id: 'g150', label: 'Unidade 150g', price: 35 } ] },
+    { id: 'coco-soleil',    name: 'Vela Coco Soleil', collection: 'sweet-fruits', image: 'assets/collections/sweet-fruits/vela-coco-soleil.webp', desc: 'Coco e sol em cera — aroma tropical e cremoso.',
+      variants: [ { id: 'unid', label: 'Unidade', price: 50 } ] }
   ];
 
   var WHATSAPP_NUMBER = '5592994365884';   /* destino do pedido no checkout */
@@ -200,9 +249,17 @@
     return (product.images && product.images.length) ? product.images : [product.image];
   }
 
-  /* Coleções como Sweet Fruits e Happy Hour têm aroma fixo — sem seleção pelo cliente */
+  /* Coleções como Sweet Fruits e Happy Hour têm aroma fixo — sem seleção pelo
+     cliente. Um produto avulso também pode sair da regra com `noAroma: true`. */
   function productHasAroma(product) {
-    return !!product && NO_AROMA_COLLECTIONS.indexOf(product.collection) === -1;
+    if (!product || product.noAroma) return false;
+    return NO_AROMA_COLLECTIONS.indexOf(product.collection) === -1;
+  }
+
+  /* Aromas oferecidos pelo produto: a lista geral, ou a própria do produto
+     quando ele só trabalha com alguns (ex.: Douce Cream). */
+  function getAromas(product) {
+    return (product && product.aromas && product.aromas.length) ? product.aromas : AROMAS;
   }
 
   function getTotalCount() {
@@ -240,7 +297,7 @@
       var p = getProductById(k.productId);
       var v = p ? getVariantById(p, k.variantId) : null;
       /* Com aroma: precisa ser um da lista. Sem aroma: a parte tem que vir vazia. */
-      var aromaOk = p && (productHasAroma(p) ? AROMAS.indexOf(k.aroma) !== -1 : k.aroma === '');
+      var aromaOk = p && (productHasAroma(p) ? getAromas(p).indexOf(k.aroma) !== -1 : k.aroma === '');
       if (!p || !v || !aromaOk || !(state.cart[key] > 0)) {
         delete state.cart[key];
         changed = true;
@@ -341,11 +398,20 @@
      decide COMO desenhar um card. Separar os dois deixa cada função com uma
      responsabilidade só e bem mais fácil de ler.                              */
 
-  /* As opções de aroma são iguais para todo produto que usa aroma e a lista
-     não muda em runtime, então montamos o HTML uma única vez. */
-  var AROMA_OPTIONS_HTML = AROMAS.map(function (aroma) {
-    return `<option value="${escapeHtml(aroma)}">${escapeHtml(aroma)}</option>`;
-  }).join('');
+  /* As listas de aroma não mudam em runtime: montamos o HTML de cada uma na
+     primeira vez e guardamos em cache (a chave é a própria lista concatenada).
+     Quase todos os produtos usam AROMAS, então o cache é quase sempre um hit. */
+  var aromaOptionsCache = {};
+
+  function aromaOptionsHtml(aromas) {
+    var cacheKey = aromas.join(KEY_SEP);
+    if (!aromaOptionsCache[cacheKey]) {
+      aromaOptionsCache[cacheKey] = aromas.map(function (aroma) {
+        return `<option value="${escapeHtml(aroma)}">${escapeHtml(aroma)}</option>`;
+      }).join('');
+    }
+    return aromaOptionsCache[cacheKey];
+  }
 
   function renderProductCard(product) {
     var defaultVariant = product.variants[0];
@@ -355,15 +421,17 @@
       return `<option value="${escapeHtml(variant.id)}">${escapeHtml(variant.label)} — ${formatBRL(variant.price)}</option>`;
     }).join('');
 
-    /* Coleções de aroma fixo (Sweet Fruits, Happy Hour) não exibem o seletor;
-       nesses casos a posição do aroma na chave do carrinho fica vazia. */
-    var defaultAroma = hasAroma ? AROMAS[0] : '';
+    /* Coleções de aroma fixo (Sweet Fruits, Happy Hour) e produtos marcados
+       com `noAroma` não exibem o seletor; nesses casos a posição do aroma na
+       chave do carrinho fica vazia. */
+    var aromas       = getAromas(product);
+    var defaultAroma = hasAroma ? aromas[0] : '';
     var qty = state.cart[buildKey(product.id, defaultVariant.id, defaultAroma)] || 0;
 
     var aromaField = hasAroma
       ? `<label class="variant-field">
            <span class="variant-label-text">Aroma</span>
-           <select class="aroma-select" aria-label="Escolha o aroma">${AROMA_OPTIONS_HTML}</select>
+           <select class="aroma-select" aria-label="Escolha o aroma">${aromaOptionsHtml(aromas)}</select>
          </label>`
       : '';
 
